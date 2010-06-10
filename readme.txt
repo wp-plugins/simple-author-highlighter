@@ -30,16 +30,10 @@ Yes
 
 == Screenshots ==
 
-1. settings.jpg
-2. preview.jpg
+1. screenshot-1.jpg
+2. screenshot-2.jpg
 
 == Changelog ==
 
 = 0.1 =
 * First release
-
-
-
-== Some info ==
-
-(http://dakulov.eu "Plugins home page ")
