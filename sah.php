@@ -3,7 +3,7 @@
 Plugin Name: Simple Author Highlighter
 Plugin URI: http://www.dakulov.eu#page5
 Description: Easy highlight authors comments
-Version: 0.1
+Version: 0.2
 Author: Akulov Dmitriy
 Author URI: http://www.dakulov.eu
 */
