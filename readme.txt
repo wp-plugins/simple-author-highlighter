@@ -3,7 +3,7 @@ Contributors: Dmitriy Akulov
 Tags: comments, highlight, comment, admin, author, post, style
 Requires at least: 2.8.0
 Tested up to: 3.0
-Stable tag: 0.1
+Stable tag: 0.2
 
 Simple Author Highlighter is a wordpress plugin that allows you to easy highlight authors comments
 
@@ -34,6 +34,10 @@ Yes
 2. screenshot-2.jpg
 
 == Changelog ==
+
+= 0.2 =
+* Fixed some bugs
+* Added option to change the text color of author's comments
 
 = 0.1 =
 * First release

@@ -26,14 +26,15 @@ add_action ('wp_head', 'addHeaderCode') ;
 function addHeaderCode() {
 		echo "\n".'<!-- Start Simple Author Highlighter -->'."\n";
 		echo '<style type="text/css">' . "\n";
-		echo '.bypostauthor {background-color: ' . get_option('color_code') . ' !important; }' . "\n";
+		echo '.bypostauthor {background-color: ' . get_option('color_code') . ' !important; color: ' . get_option('color_code2') . ' ;}' . "\n";
 		echo '</style>'."\n";
-		echo '<!-- Start Simple Author Highlighter  -->'."\n";
+		echo '<!-- Stop Simple Author Highlighter -->'."\n";
 }
 
 function register_mysettings() {
 	//register our settings
 	register_setting( 'sah-settings-group', 'color_code' );
+	register_setting( 'sah-settings-group', 'color_code2' );
 }
 
 function sah_settings_page() {
@@ -46,8 +47,12 @@ function sah_settings_page() {
     <table class="form-table">
         <tr valign="top">
         <th scope="row">Enter the highlight color</th>
-        <td><input type="text" name="color_code" value="<?php echo get_option('color_code'); ?>" /> <i>For example: #e8e8e8</i></td>
+        <td><input type="text" name="color_code" value="<?php echo get_option('color_code'); ?>" /> <i>For example: #b6bdf6 Leave blank for theme's default</i><br/></td>
         </tr>
+		<tr valign="top">
+		<th scope="row">Enter the text color</th>
+		<td><input type="text" name="color_code2" value="<?php echo get_option('color_code2'); ?>" /> <i>For example: #ffffff Leave blank for theme's default</i></td>
+		</tr>
     </table>
     
     <p class="submit">
