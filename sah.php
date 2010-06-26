@@ -3,7 +3,7 @@
 Plugin Name: Simple Author Highlighter
 Plugin URI: http://www.dakulov.eu#page5
 Description: Easy highlight authors comments
-Version: 0.2
+Version: 0.3
 Author: Akulov Dmitriy
 Author URI: http://www.dakulov.eu
 */
@@ -15,7 +15,7 @@ add_action('admin_menu', 'sah_create_menu');
 function sah_create_menu() {
 
 	//create new top-level menu
-	add_options_page('Simple Author Highlighter', 'SAH Settings', 'administrator', 'sah', 'sah_settings_page');
+	add_options_page('Simple Author Highlighter', 'Simple Author Highlighter', 'administrator', 'sah', 'sah_settings_page');
 
 	//call register settings function
 	add_action( 'admin_init', 'register_mysettings' );
@@ -27,6 +27,7 @@ function addHeaderCode() {
 		echo "\n".'<!-- Start Simple Author Highlighter -->'."\n";
 		echo '<style type="text/css">' . "\n";
 		echo '.bypostauthor {background-color: ' . get_option('color_code') . ' !important; color: ' . get_option('color_code2') . ' ;}' . "\n";
+		echo '.comment-author-' . get_option('user') . ' {background-color: ' . get_option('user_color_code') . ' !important; color: ' . get_option('user_color_code2') . ' ;}' . "\n";
 		echo '</style>'."\n";
 		echo '<!-- Stop Simple Author Highlighter -->'."\n";
 }
@@ -35,6 +36,9 @@ function register_mysettings() {
 	//register our settings
 	register_setting( 'sah-settings-group', 'color_code' );
 	register_setting( 'sah-settings-group', 'color_code2' );
+	register_setting( 'sah-settings-group', 'user_color_code' );
+	register_setting( 'sah-settings-group', 'user_color_code2' );
+	register_setting( 'sah-settings-group', 'user' );
 }
 
 function sah_settings_page() {
@@ -53,14 +57,28 @@ function sah_settings_page() {
 		<th scope="row">Enter the text color</th>
 		<td><input type="text" name="color_code2" value="<?php echo get_option('color_code2'); ?>" /> <i>For example: #ffffff Leave blank for theme's default</i></td>
 		</tr>
-    </table>
-    
+	</table>
+	<h2>Global highlight a user</h2>
+	 <table class="form-table">
+    <tr valign="top">
+        <th scope="row">Enter the user's login name</th>
+        <td><input type="text" name="user" value="<?php echo get_option('user'); ?>" /> <i>For example: admin</i><br/></td>
+        </tr>
+		<tr valign="top">
+        <th scope="row">Enter the highlight color</th>
+        <td><input type="text" name="user_color_code" value="<?php echo get_option('user_color_code'); ?>" /> <i>For example: #b6bdf6 Leave blank for theme's default</i><br/></td>
+        </tr>
+		<tr valign="top">
+		<th scope="row">Enter the text color</th>
+		<td><input type="text" name="user_color_code2" value="<?php echo get_option('user_color_code2'); ?>" /> <i>For example: #ffffff Leave blank for theme's default</i></td>
+		</tr>
+		</table>
     <p class="submit">
     <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
     </p>
 
 </form>
 <br/><center>
-<a href="http://www.dakulov.eu">Plugin Page</a></center>
+<a target="_blank" href="http://www.dakulov.eu#page5">Plugin Page</a></center>
 </div>
 <?php } ?>
