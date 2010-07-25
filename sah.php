@@ -3,7 +3,7 @@
 Plugin Name: Simple Author Highlighter
 Plugin URI: http://www.dakulov.eu#page5
 Description: Easy highlight authors comments
-Version: 0.3
+Version: 0.4
 Author: Akulov Dmitriy
 Author URI: http://www.dakulov.eu
 */
@@ -18,7 +18,7 @@ function sah_create_menu() {
 	add_options_page('Simple Author Highlighter', 'Simple Author Highlighter', 'administrator', 'sah', 'sah_settings_page');
 
 	//call register settings function
-	add_action( 'admin_init', 'register_mysettings' );
+	add_action( 'admin_init', 'sah_register_mysettings' );
 }
 
 add_action ('wp_head', 'addHeaderCode') ;
@@ -32,7 +32,22 @@ function addHeaderCode() {
 		echo '<!-- Stop Simple Author Highlighter -->'."\n";
 }
 
-function register_mysettings() {
+if ( function_exists('register_uninstall_hook') )
+	register_uninstall_hook(__FILE__, 'sah_deinstall');
+ 
+ /**
+ * Delete options in database
+ */
+function sah_deinstall() {
+ 
+	delete_option('color_code');
+	delete_option('color_code2');
+	delete_option('user_color_code');
+	delete_option('user_color_code2');
+	delete_option('user');
+}
+
+function sah_register_mysettings() {
 	//register our settings
 	register_setting( 'sah-settings-group', 'color_code' );
 	register_setting( 'sah-settings-group', 'color_code2' );
@@ -79,6 +94,6 @@ function sah_settings_page() {
 
 </form>
 <br/><center>
-<a target="_blank" href="http://www.dakulov.eu#page5">Plugin Page</a></center>
+If you have questions visit our  <a target="_blank" href="http://www.dakulov.eu#page5">website</a> | If you liked the plugin please vote for us <a target="_blank" href="http://wordpress.org/extend/plugins/simple-author-highlighter/">here</a></center>
 </div>
 <?php } ?>
