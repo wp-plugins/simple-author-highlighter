@@ -3,7 +3,7 @@
 Plugin Name: Simple Author Highlighter
 Plugin URI: http://www.dakulov.eu#page5
 Description: Easy highlight authors comments
-Version: 0.4
+Version: 0.5
 Author: Akulov Dmitriy
 Author URI: http://www.dakulov.eu
 */
@@ -21,9 +21,9 @@ function sah_create_menu() {
 	add_action( 'admin_init', 'sah_register_mysettings' );
 }
 
-add_action ('wp_head', 'addHeaderCode') ;
+add_action ('wp_head', 'sah_addHeaderCode') ;
 
-function addHeaderCode() {
+function sah_addHeaderCode() {
 		echo "\n".'<!-- Start Simple Author Highlighter -->'."\n";
 		echo '<style type="text/css">' . "\n";
 		echo '.bypostauthor {background-color: ' . get_option('color_code') . ' !important; color: ' . get_option('color_code2') . ' ;}' . "\n";
@@ -94,6 +94,6 @@ function sah_settings_page() {
 
 </form>
 <br/><center>
-If you have questions visit our  <a target="_blank" href="http://www.dakulov.eu#page5">website</a> | If you liked the plugin please vote for us <a target="_blank" href="http://wordpress.org/extend/plugins/simple-author-highlighter/">here</a></center>
+If you have questions visit our  <a target="_blank" class="button-primary" href="http://www.dakulov.eu#page5">website</a> | If you liked the plugin please <a target="_blank" class="button-primary" href="http://wordpress.org/extend/plugins/simple-author-highlighter/">vote</a> for us </center>
 </div>
 <?php } ?>
