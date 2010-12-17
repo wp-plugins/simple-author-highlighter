@@ -3,7 +3,7 @@
 Plugin Name: Simple Author Highlighter
 Plugin URI: http://www.dakulov.eu#page5
 Description: Easy highlight authors comments
-Version: 0.5
+Version: 0.6
 Author: Akulov Dmitriy
 Author URI: http://www.dakulov.eu
 */
@@ -24,10 +24,14 @@ function sah_create_menu() {
 add_action ('wp_head', 'sah_addHeaderCode') ;
 
 function sah_addHeaderCode() {
+		$sah_users = get_option('user');
+		$sah_userArray = explode(",", $sah_users);
 		echo "\n".'<!-- Start Simple Author Highlighter -->'."\n";
 		echo '<style type="text/css">' . "\n";
 		echo '.bypostauthor {background-color: ' . get_option('color_code') . ' !important; color: ' . get_option('color_code2') . ' ;}' . "\n";
-		echo '.comment-author-' . get_option('user') . ' {background-color: ' . get_option('user_color_code') . ' !important; color: ' . get_option('user_color_code2') . ' ;}' . "\n";
+		for($i = 0; $i < count($sah_userArray); $i++){
+	echo '.comment-author-' . $sah_userArray[$i] . ' {background-color: ' . get_option('user_color_code') . ' !important; color: ' . get_option('user_color_code2') . ' ;}' . "\n";
+}
 		echo '</style>'."\n";
 		echo '<!-- Stop Simple Author Highlighter -->'."\n";
 }
@@ -48,7 +52,7 @@ function sah_deinstall() {
 }
 
 function sah_register_mysettings() {
-	//register our settings
+	//register  settings
 	register_setting( 'sah-settings-group', 'color_code' );
 	register_setting( 'sah-settings-group', 'color_code2' );
 	register_setting( 'sah-settings-group', 'user_color_code' );
@@ -73,11 +77,11 @@ function sah_settings_page() {
 		<td><input type="text" name="color_code2" value="<?php echo get_option('color_code2'); ?>" /> <i>For example: #ffffff Leave blank for theme's default</i></td>
 		</tr>
 	</table>
-	<h2>Global highlight a user</h2>
+	<h2>Global highlight users</h2>
 	 <table class="form-table">
     <tr valign="top">
-        <th scope="row">Enter the user's login name</th>
-        <td><input type="text" name="user" value="<?php echo get_option('user'); ?>" /> <i>For example: admin</i><br/></td>
+        <th scope="row">Enter the users login names</th>
+        <td><input type="text" name="user" value="<?php echo get_option('user'); ?>" /> <i>For example: admin For multiple users use comma as a delimiter</i><br/></td>
         </tr>
 		<tr valign="top">
         <th scope="row">Enter the highlight color</th>
