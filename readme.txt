@@ -3,7 +3,7 @@ Contributors: Dmitriy Akulov
 Donate link: http://www.dakulov.eu/
 Tags: comments, highlight, comment, admin, author, post, style, highlighter, global, user, 
 Requires at least: 2.8.0
-Tested up to: 3.0.3
+Tested up to: 3.1
 Stable tag: 0.6
 
 Simple Author Highlighter is a wordpress plugin that allows you to easy highlight authors comments. More on our website www.dakulov.eu
@@ -25,9 +25,13 @@ Installation & Usage
 
 == Frequently Asked Questions ==
 
-= Is it working with Wordpress 3? =
+= Is it working with Wordpress 3.1? =
 
 Yes
+
+= I have troubles setting up the plugin =
+
+Please leave a comment at http://www.dakulov.eu/#page5 and i will be happy to help you.
 
 = Can i select multiple users in Global Highlighting? =
 
